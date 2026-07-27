@@ -8,6 +8,8 @@ spec:
     metadata: {labels: {app: portfolio}}
     spec:
       containers:
-      - name: portfolio
-        image: portfolio:latest
-        ports: [{containerPort: 80}]
+        - name: portfolio
+          image: nbdevops3036/portfolio:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
