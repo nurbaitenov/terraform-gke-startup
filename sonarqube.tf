@@ -9,6 +9,7 @@ resource "helm_release" "sonarqube" {
 
   values = [
     yamlencode({
+      monitoringPasscode = "MyStrongMonitoringPasscode123!"
 
       postgresql = {
         enabled = false

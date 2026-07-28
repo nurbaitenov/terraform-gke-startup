@@ -4,11 +4,12 @@ resource "google_sql_database_instance" "postgres" {
   region           = var.region
 
   settings {
+    edition = "ENTERPRISE"
+
     tier = "db-custom-2-4096"
 
     ip_configuration {
-      ipv4_enabled    = false
-      private_network = google_compute_network.vpc.id
+      ipv4_enabled = true
     }
   }
 
