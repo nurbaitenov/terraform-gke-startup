@@ -1,0 +1,60 @@
+# Namespace dev
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+
+
+# Deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.27-alpine
+        ports:
+        - containerPort: 80
+
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: prod
+spec:
+  selector:
+    app: nginx
+  ports:
+  - port: 80
+    targetPort: 80 
+  type: ClusterIP      
+
+
+# creates networkpolicy for prod ns, other ns pods cannot talk to prod pods
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: prod
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+
+# kubectl apply -f prod.yaml
