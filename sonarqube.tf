@@ -1,30 +1,52 @@
-resource "helm_release" "sonarqube" {
+# resource "helm_release" "sonarqube" {
 
-  name       = "sonarqube"
-  repository = "https://SonarSource.github.io/helm-chart-sonarqube"
-  chart      = "sonarqube"
+#   name       = "sonarqube"
+#   repository = "https://SonarSource.github.io/helm-chart-sonarqube"
+#   chart      = "sonarqube"
 
-  namespace        = "sonarqube"
-  create_namespace = true
+#   namespace        = "sonarqube"
+#   create_namespace = true
 
-  values = [
-    yamlencode({
-      monitoringPasscode = "MyStrongMonitoringPasscode123!"
+#   depends_on = [
+#     google_sql_database.sonarqube,
+#     google_sql_user.sonarqube,
+#     random_password.sonarqube_monitoring,
+#     google_sql_user.sonarqube
+#   ]
 
-      postgresql = {
-        enabled = false
-      }
+#   values = [
+#     yamlencode({
 
-      jdbcOverwrite = {
+#       community = {
+#         enabled = true
+#       }
 
-        enabled = true
+#       monitoringPasscode = random_password.sonarqube_monitoring.result
 
-        jdbcUrl = "jdbc:postgresql://PRIVATE_IP:5432/sonarqube"
+#       postgresql = {
+#         enabled = false
+#       }
 
-        jdbcUsername = "sonarqube"
+#       jdbcOverwrite = {
+#         enabled = true
 
-        jdbcPassword = random_password.postgres.result
-      }
-    })
-  ]
-}
+#         jdbcUrl = "jdbc:postgresql://${google_sql_database_instance.postgres.public_ip_address}:5432/sonarqube"
+
+#         jdbcUsername = google_sql_user.sonarqube.name
+
+#         jdbcPassword = random_password.postgres.result
+#       }
+#     })
+#   ]
+# }
+
+# resource "google_sql_user" "sonarqube" {
+#   instance = google_sql_database_instance.postgres.name
+#   name     = "sonarqube"
+#   password = random_password.postgres.result
+# }
+
+# resource "random_password" "sonarqube_monitoring" {
+#   length  = 32
+#   special = false
+# }

@@ -1,46 +1,40 @@
-resource "google_sql_database_instance" "postgres" {
-  name             = "sonarqube-postgres"
-  database_version = "POSTGRES_16"
-  region           = var.region
+# resource "google_sql_database_instance" "postgres" {
+#   name             = "sonarqube-postgres"
+#   database_version = "POSTGRES_16"
+#   region           = var.region
 
-  settings {
-    edition = "ENTERPRISE"
+#   settings {
+#     edition = "ENTERPRISE"
 
-    tier = "db-custom-2-4096"
+#     tier = "db-custom-2-4096"
 
-    ip_configuration {
-      ipv4_enabled = true
-    }
-  }
+#     ip_configuration {
+#       ipv4_enabled = true
+#     }
+#   }
 
-  deletion_protection = false
-}
+#   deletion_protection = false
+# }
 
-resource "google_sql_database" "sonarqube" {
-  name     = "sonarqube"
-  instance = google_sql_database_instance.postgres.name
-}
+# resource "google_sql_database" "sonarqube" {
+#   name     = "sonarqube"
+#   instance = google_sql_database_instance.postgres.name
+# }
 
-resource "random_password" "postgres" {
-  length  = 20
-  special = true
-}
+# resource "random_password" "postgres" {
+#   length  = 20
+#   special = true
+# }
 
-resource "google_sql_user" "sonarqube" {
-  instance = google_sql_database_instance.postgres.name
-  name     = "sonarqube"
-  password = random_password.postgres.result
-}
+# resource "google_secret_manager_secret" "db_password" {
+#   secret_id = "sonarqube-db-password"
 
-resource "google_secret_manager_secret" "db_password" {
-  secret_id = "sonarqube-db-password"
+#   replication {
+#     auto {}
+#   }
+# }
 
-  replication {
-    auto {}
-  }
-}
-
-resource "google_secret_manager_secret_version" "db_password" {
-  secret      = google_secret_manager_secret.db_password.id
-  secret_data = random_password.postgres.result
-}
+# resource "google_secret_manager_secret_version" "db_password" {
+#   secret      = google_secret_manager_secret.db_password.id
+#   secret_data = random_password.postgres.result
+# }
