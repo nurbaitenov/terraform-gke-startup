@@ -24,7 +24,10 @@ resource "google_container_node_pool" "primary" {
   location = var.zone
   cluster  = google_container_cluster.gke.id
 
-  node_count = 1
+  autoscaling {
+    min_node_count = 1 # scales from 1 to 99 nodes
+    max_node_count = 99
+  }
 
   node_config {
     machine_type = "e2-medium"
