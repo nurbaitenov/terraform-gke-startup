@@ -18,4 +18,4 @@ helm version
 kubectl get secret -n monitoring prometheus-grafana \
 -o jsonpath="{.data.admin-password}" | base64 -d
 
-Enter the dashboard ID (15759).
+Enter the dashboard ID 15757, 15759.
