@@ -1,3 +1,8 @@
+# Instruction how to build modules
+
+
+## Network module
+```
 module "network" {
   source = "./modules/network"
 
@@ -7,7 +12,10 @@ module "network" {
   subnet_name   = var.subnet_name
   ip_cidr_range = var.ip_cidr_range
 }
+```
 
+## GKE module
+```
 module "gke" {
   source = "./modules/gke"
 
@@ -18,3 +26,4 @@ module "gke" {
   min_node_count = 1
   max_node_count = 99
 }
+```
