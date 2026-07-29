@@ -1,11 +1,11 @@
 module "network" {
   source = "./modules/network"
 
-  project_id    = var.project_id
-  region        = var.region
-  network_name  = var.network_name
-  subnet_name   = var.subnet_name
-  ip_cidr_range = var.ip_cidr_range
+  project_id    = "project-eff7c2ad-c9a5-425e-96b"
+  region        = "us-central1"
+  network_name  = "gke-vpc"
+  subnet_name   = "gke-subnet"
+  ip_cidr_range = "10.10.0.0/16"
 }
 
 module "gke" {

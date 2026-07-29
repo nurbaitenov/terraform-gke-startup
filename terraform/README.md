@@ -1,7 +1,7 @@
 # Instruction how to build modules
 
 
-## Network module
+### Network module
 ```
 module "network" {
   source = "./modules/network"
@@ -14,7 +14,7 @@ module "network" {
 }
 ```
 
-## GKE module
+### GKE module
 ```
 module "gke" {
   source = "./modules/gke"
