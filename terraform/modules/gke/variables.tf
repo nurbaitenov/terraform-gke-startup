@@ -32,3 +32,11 @@ variable "max_node_count" {
   type        = string
   default     = ""
 }
+
+variable "network" {
+  type = string
+}
+
+variable "subnetwork" {
+  type = string
+}

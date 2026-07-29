@@ -2,8 +2,11 @@ resource "google_container_cluster" "gke" {
   name     = var.gke_name
   location = var.zone
 
-  network    = google_compute_network.vpc.id
-  subnetwork = google_compute_subnetwork.subnet.id
+  # network    = google_compute_network.vpc.id
+  # subnetwork = google_compute_subnetwork.subnet.id
+
+  network    = var.network
+  subnetwork = var.subnetwork
 
   deletion_protection = false
 

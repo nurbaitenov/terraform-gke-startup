@@ -17,4 +17,6 @@ module "gke" {
   machine_type   = "e2-medium"
   min_node_count = 1
   max_node_count = 99
+  network        = module.network.network_id
+  subnetwork     = module.network.subnetwork_id
 }
