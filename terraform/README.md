@@ -27,3 +27,7 @@ module "gke" {
   max_node_count = 99
 }
 ```
+
+
+
+###### terraform apply -var-file=environments/dev.tfvars.example
