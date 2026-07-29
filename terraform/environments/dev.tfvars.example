@@ -1,0 +1,11 @@
+project_id  = "project-eff7c2ad-c9a5-425e-96b"
+region      = "us-central1"
+
+network_name = "gke-vpc"
+subnet_name  = "gke-subnet"
+ip_cidr_range  = "10.10.0.0/16"
+
+cluster_name = "gke-cluster"
+
+node_count   = 1
+machine_type = "e2-medium"
