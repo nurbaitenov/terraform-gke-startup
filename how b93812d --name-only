@@ -1,0 +1,13 @@
+[33mcommit 911ba19f6b96a844bccf7df61b30a4f4c6b497ce[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: nurbaitenov <baitenovnur@gmail.com>
+Date:   Wed Jul 29 11:20:48 2026 +0000
+
+    added
+
+ terraform/main.tf                      |  2 [32m+[m[31m-[m
+ terraform/modules/.terraform.lock.hcl  | 21 [31m---------------------[m
+ terraform/modules/gke/main.tf          | 39 [31m---------------------------------------[m
+ terraform/modules/network/main.tf      | 21 [31m---------------------[m
+ terraform/modules/network/output.tf    |  7 [31m-------[m
+ terraform/modules/network/variables.tf | 29 [31m-----------------------------[m
+ 6 files changed, 1 insertion(+), 118 deletions(-)
