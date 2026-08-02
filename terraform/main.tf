@@ -8,15 +8,15 @@ module "network" {
   ip_cidr_range = "10.10.0.0/16"
 }
 
-module "gke" {
-  source = "./modules/gke"
+# module "gke" {
+#   source = "./modules/gke"
 
-  zone           = "us-central1-a"
-  gke_name       = "gke-cluster"
-  node_pool_name = "primary-pool"
-  machine_type   = "e2-medium"
-  min_node_count = 1
-  max_node_count = 99
-  network        = module.network.network_id
-  subnetwork     = module.network.subnetwork_id
-}
+#   zone           = "us-central1-a"
+#   gke_name       = "gke-cluster"
+#   node_pool_name = "primary-pool"
+#   machine_type   = "e2-medium"
+#   min_node_count = 1
+#   max_node_count = 99
+#   network        = module.network.network_name
+#   subnetwork     = module.network.subnet_name
+# }

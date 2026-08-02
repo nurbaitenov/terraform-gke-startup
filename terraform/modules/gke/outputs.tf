@@ -13,10 +13,10 @@ output "node_pool_name" {
   value       = google_container_node_pool.primary.name
 }
 
-output "network_id" {
-  value = google_compute_network.vpc.id
-}
+# output "network_id" {
+#   value = google_compute_network.vpc.id
+# }
 
-output "subnetwork_id" {
-  value = google_compute_subnetwork.subnet.id
-}
+# output "subnetwork_id" {
+#   value = google_compute_subnetwork.subnet.id
+# }
